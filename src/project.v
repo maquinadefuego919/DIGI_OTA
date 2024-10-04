@@ -15,12 +15,29 @@ module tt_um_example (
     input  wire       clk,      // clock
     input  wire       rst_n     // reset_n - low to reset
 );
-
+     wire Out
+     wire Vip, Vin
   // All output pins must be assigned. If not used, assign to 0.
-  assign uo_out  = ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
+    assign [0] uo_out  = Out;  // Example: ou_out is the sum of ui_in and uio_in
   assign uio_out = 0;
   assign uio_oe  = 0;
+    assign [0] ui_in  =Vip;
+        assign [1] ui_in  =Vin;
 
+wire INn, INp, CMP, EN, not_EN, Op, On; //internals nets
+not IV1 (INn, Vip);
+not IV2 (INn, CMP);
+not IV3 (INp, Vin);
+not IV4 (INp, CMP);
+not IV5 (Op, INn);
+not IV6 (On, INp);
+not IV7 (not_EN, EN);
+xor XOR1 (EN, Op, On);
+bufif1 BT1 (Out, EN, Op);
+notif1 IT1 (CMP, not_EN, Op);
+
+
+    
   // List all unused inputs to prevent warnings
   wire _unused = &{ena, clk, rst_n, 1'b0};
 
