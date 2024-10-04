@@ -15,8 +15,8 @@ module tt_um_example (
     input  wire       clk,      // clock
     input  wire       rst_n     // reset_n - low to reset
 );
-     wire Out
-     wire Vip, Vin
+   output  wire Out;
+     input wire Vip, Vin;
   // All output pins must be assigned. If not used, assign to 0.
     assign [0] uo_out  = Out;  // Example: ou_out is the sum of ui_in and uio_in
   assign uio_out = 0;
