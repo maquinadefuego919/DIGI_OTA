@@ -1,6 +1,6 @@
 # Tiny Tapeout project information
 project:
-  title:        "Digi--OTA"      # Project title
+  title:        "DIGI_OTA"      # Project title
   author:       "ABNER"      # Your name
   discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
   description:  "Operational transconductance amplifier"      # One line description of what your project does
