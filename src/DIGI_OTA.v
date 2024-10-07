@@ -33,7 +33,7 @@ not IV5 (Op, INn);
 not IV6 (On, INp);
 not IV7 (not_EN, EN);
 xor XOR1 (EN, Op, On);
-    bufif1 BT1 (Out, Op, En);
+    bufif1 BT1 (Out, En, Op);
 notif1 IT1 (CMP, Op, not_EN);
 
 
