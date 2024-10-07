@@ -24,7 +24,7 @@ module tt_um_DIGI_OTA (
     assign [0] ui_in  =Vip;
         assign [1] ui_in  =Vin;
 
-wire INn, INp, CMP, EN, not_EN, Op, On; //internals nets
+wire INn, INp, CMP, EN, not_EN, Op, On, Pr; //internals nets
 not IV1 (INn, Vip);
 not IV2 (INn, CMP);
 not IV3 (INp, Vin);
@@ -33,9 +33,9 @@ not IV5 (Op, INn);
 not IV6 (On, INp);
 not IV7 (not_EN, EN);
 xor XOR1 (EN, Op, On);
-bufif1 BT1 (Out, EN, Op);
+    bufif1 BT1 (Pr, EN, Op);
 notif1 IT1 (CMP, not_EN, Op);
-
+    buf Buf1 (Out, Pr);
 
     
   // List all unused inputs to prevent warnings
