@@ -5,7 +5,7 @@
 SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = DIGI_OTA.v
+PROJECT_SOURCES = tt_um_DIGI_OTA.v
 
 ifneq ($(GATES),yes)
 
