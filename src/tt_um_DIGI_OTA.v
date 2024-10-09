@@ -21,8 +21,8 @@ module tt_um_DIGI_OTA (
     assign uo_out[7:1] = 7'b0000000:
     
     
-    assign [0] ui_in  = Vip;
-    assign [1] ui_in  = Vin;
+    assign Vip= ui_in [0]   ;
+    assign Vin= ui_in [1];
 
 wire INn, INp, CMP, EN, not_EN, Op, On, Pr, INn_CMP, INp_CMP, INp_And, INn_And; //internals nets
 not IV1 (INn, Vip);
