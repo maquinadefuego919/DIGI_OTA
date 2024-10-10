@@ -15,24 +15,24 @@ module tt_um_DIGI_OTA (
     input  wire       clk,      // clock
     input  wire       rst_n     // reset_n - low to reset
 );
-    wire Out, Vip, Vin;
+wire Out, Vip, Vin;
   // All output pins must be assigned. If not used, assign to 0.
-    assign [0] uo_out  = Out;  // Example: ou_out is the sum of ui_in and uio_in
-    assign uo_out[7:1] = 7'b0000000:
+assign [0] uo_out  = Out;  // Example: ou_out is the sum of ui_in and uio_in
+assign uo_out[7:1] = 7'b0000000:
     
     
-    assign Vip= ui_in [0]   ;
-    assign Vin= ui_in [1];
+assign Vip= ui_in [0]   ;
+assign Vin= ui_in [1];
 
-wire INn, INp, CMP, EN, not_EN, Op, On, Pr, INn_CMP, INp_CMP, INp_And, INn_And; //internals nets
+wire INn, INp, CMP, EN, not_EN, Op, On, Pr, INn_CMP, INp_CMP, INp_NOR, INn_NOR; //internals nets
 not IV1 (INn, Vip);
 not IV2 (INn, CMP);
 not IV3 (INp, Vin);
 not IV4 (INp, CMP);
 
     
-nor NOR1 (INn_And, INn, INn_CMP):
-nor NOR2 (INp_And, INp, Inp_CMP);
+nor NOR1 (INn_NOR, INn, INn_CMP):
+nor NOR2 (INp_NOR, INp, Inp_CMP);
     
 not IV5 (Op, INn_CMP);
 not IV6 (On, INp_CMP);
