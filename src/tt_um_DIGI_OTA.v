@@ -30,8 +30,9 @@ not IV2 (INn, CMP);
 not IV3 (INp, Vin);
 not IV4 (INp, CMP);
 
-xor XOR1 (INn_And, INn, INn_CMP):
-xor XOR2 (INp_And, INp, Inp_CMP);
+    
+nor NOR1 (INn_And, INn, INn_CMP):
+nor NOR2 (INp_And, INp, Inp_CMP);
     
 not IV5 (Op, INn_CMP);
 not IV6 (On, INp_CMP);
