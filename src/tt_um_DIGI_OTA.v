@@ -15,32 +15,59 @@ module tt_um_DIGI_OTA (
     input  wire       clk,      // clock
     input  wire       rst_n     // reset_n - low to reset
 );
-wire Out, Vip, Vin;
+    wire Vip, Vin, Out;
+
+    assign Vip = ui_in[0];
+    assign Vin = ui_in[1];
+    
+    assign uo_out[0]  = Out;  
+    assign uo_out[7:1] = 7'b0000000; 
+
+    wire INn, INp, INn_CMP, INp_CMP, CMP, EN, not_EN, Op, On, INn_AND, INp_AND; //internals nets 
+    not IV1(INn, Vip);    
+    not INV2(INn_CMP,CMP);
+    not IV3(INp, Vin);
+    not INV4(INp_CMP,CMP);
+
+    and AND1(INn_AND, INn, INn_CMP);
+    and AND2(INp_AND, INp, INp_CMP);
+    
+    not IV5(Op, INn_AND);
+    not IV6(On, INp_AND);
+    
+    xor XOR1(EN, Op, On);
+    
+    not IV7(not_EN, EN);
+    notif1 IT1(CMP, not_EN, Op);  
+    
+    bufif1 BT1(Out, EN, Op);   
+    
+//wire Out, Vip, Vin;
   // All output pins must be assigned. If not used, assign to 0.
-assign [0] uo_out  = Out;  // Example: ou_out is the sum of ui_in and uio_in
-assign uo_out[7:1] = 7'b0000000:
+//assign [0] uo_out  = Out;  // Example: ou_out is the sum of ui_in and uio_in
+//assign uo_out[7:1] = 7'b0000000:
     
     
-assign Vip= ui_in [0]   ;
-assign Vin= ui_in [1];
+//assign Vip= ui_in [0]   ;
+//assign Vin= ui_in [1];
 
-wire INn, INp, CMP, EN, not_EN, Op, On, Pr, INn_CMP, INp_CMP, INp_NOR, INn_NOR; //internals nets
-not IV1 (INn, Vip);
-not IV2 (INn, CMP);
-not IV3 (INp, Vin);
-not IV4 (INp, CMP);
+//wire INn, INp, CMP, EN, not_EN, Op, On, Pr, INn_CMP, INp_CMP, INp_NOR, INn_NOR; //internals nets
+//not IV1 (INn, Vip);
+//not IV2 (INn, CMP);
+//not IV3 (INp, Vin);
+//not IV4 (INp, CMP);
 
     
-nor NOR1 (INn_NOR, INn, INn_CMP):
-nor NOR2 (INp_NOR, INp, Inp_CMP);
+//nor NOR1 (INn_NOR, INn, INn_CMP):
+//nor NOR2 (INp_NOR, INp, Inp_CMP);
     
-not IV5 (Op, INn_CMP);
-not IV6 (On, INp_CMP);
+//not IV5 (Op, INn_CMP);
+//not IV6 (On, INp_CMP);
     
-not IV7 (not_EN, EN);
-xor XOR1 (EN, Op, On);
-bufif1 BT1 (Pr, EN, Op);
-notif1 IT1 (CMP, not_EN, Op);
+//not IV7 (not_EN, EN);
+//xor XOR1 (EN, Op, On);
+//bufif1 BT1 (Pr, EN, Op);
+//notif1 IT1 (CMP, not_EN, Op);
    
   assign uio_out = 0;
     assign uio_oe  = 0;
