@@ -29,11 +29,11 @@ module tt_um_DIGI_OTA (
     not IV3(INp, Vin);
     not INV4(INp_CMP,CMP);
 
-    and AND1(INn_AND, INn, INn_CMP);
-    and AND2(INp_AND, INp, INp_CMP);
+    nor NOR1(Op, INn, INn_CMP);
+    nor NOR2(On, INp, INp_CMP);
     
-    not IV5(Op, INn_AND);
-    not IV6(On, INp_AND);
+    //not IV5(Op, INn_AND);
+    //not IV6(On, INp_AND);
     
     xor XOR1(EN, Op, On);
     
