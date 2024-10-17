@@ -5,7 +5,7 @@ project:
   discord:      "UABC"      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
   description:  "Operational transconductance amplifier"      # One line description of what your project does
   language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
-  clock_hz:     10000000       # Clock frequency in Hz (or 0 if not applicable)
+  clock_hz:     0       # Clock frequency in Hz (or 0 if not applicable)
 
   # How many tiles your design occupies? A single tile is about 167x108 uM.
   tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
@@ -19,11 +19,18 @@ project:
   source_files:
     - "tt_um_DIGI_OTA.v"
 
+# Indicate if the project has analog components
+  is_analog: true  # New field added to indicate analog behavior
+
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
   # Inputs
   ui[0]: "Vip"
+    name: "Vip"
+    is_analog: true     # Indicating that this is an analog signal
   ui[1]: "Vin"
+    name: "Vin"
+    is_analog: true     # Indicating that this is an analog signal
   ui[2]: "UI2"
   ui[3]: "UI3"
   ui[4]: "UI4"
@@ -33,6 +40,8 @@ pinout:
 
   # Outputs
   uo[0]: "Out"
+    name: "Out"
+    is_analog: true     # Indicating analog signal
   uo[1]: "UO1"
   uo[2]: "UO2"
   uo[3]: "UO3"
