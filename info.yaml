@@ -25,10 +25,10 @@ project:
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
   # Inputs
-  ui[0]: "Vip"
+  ui[0]: 
     name: "Vip"
     is_analog: true     # Indicating that this is an analog signal
-  ui[1]: "Vin"
+  ui[1]: 
     name: "Vin"
     is_analog: true     # Indicating that this is an analog signal
   ui[2]: "UI2"
@@ -39,7 +39,7 @@ pinout:
   ui[7]: "UI7"
 
   # Outputs
-  uo[0]: "Out"
+  uo[0]: 
     name: "Out"
     is_analog: true     # Indicating analog signal
   uo[1]: "UO1"
